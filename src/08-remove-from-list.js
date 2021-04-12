@@ -7,7 +7,7 @@
  * @return {List}
  *
  * @example
- * For l = [3, 1, 2, 3, 4, 5] and k = 3,
+ * For l = [3, 1, 2, 3, 4, 5] and l = 3,
  * the output should be [1, 2, 4, 5]
  *
  * Singly - linked lists are already defined with this interface
@@ -17,8 +17,19 @@
  * }
  */
 
-function removeKFromList(/* l, k */) {
-  throw new Error('Not implemented');
+function removeKFromList(l, k) {
+  let lL = l;
+  let current = lL;
+  while (current != null) {
+    while (current.next !== null && current.next.value === k) {
+      current.next = current.next.next;
+    }
+    current = current.next;
+  }
+  while (lL !== null && lL.value === k) {
+    lL = lL.next;
+  }
+  return lL;
 }
 
 module.exports = removeKFromList;
